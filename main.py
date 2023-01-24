@@ -14,7 +14,7 @@ def motivate():
 
 def sendMail(quote):
   email_body = f"This is today's motivational quote:\n{quote}"
-  server = os.environ['STMP_SERVER']
+  server = os.environ['SMTP_SERVER']
   port = 587
   s = smtplib.SMTP(host = server,port = port)
   s.starttls()
