@@ -2,9 +2,6 @@ import schedule, time, os, smtplib, random, ast
 from email.mime.multipart import MIMEMultipart 
 from email.mime.text import MIMEText
 
-username = os.environ['mailUsername']
-password = os.environ['mailPassword']
-
 def motivate():
   quotes = []
   with open('quotes.txt', 'r') as f:
@@ -18,6 +15,8 @@ def sendMail(quote):
   port = 587
   s = smtplib.SMTP(host = server,port = port)
   s.starttls()
+  username = os.environ['mailUsername']
+  password = os.environ['mailPassword']
   s.login(username, password)
   msg = MIMEMultipart()
   msg['To'] = os.environ['emailTo']
